@@ -61,4 +61,9 @@ function validateParams(Schema) {
         req.params = value;
         next();
     };
+}        
+
+module.exports = {
+    validateBody: validateBody(komikSchema),
+    validateParams: validateParams(idSchema)
 }

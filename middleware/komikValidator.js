@@ -36,4 +36,29 @@ function validateBody(Schema) {
                 field: item.path.join('.'),
                 message: item.message
             }))
-            )
+        );
+        }req.body = value;
+        next();
+    };
+}
+
+
+function validateParams(Schema) {
+    return (req, res, next) => {
+        const { error, value } = Schema.validate(req.params);
+
+        if (error) {
+            return errorResponse(
+                res,
+                "Parameter tidak valid",
+                400,
+                error.details.map((item) => ({
+                    field: item.path.join('.'),
+                    message: item.message
+                }))
+            );
+        }
+        req.params = value;
+        next();
+    };
+}

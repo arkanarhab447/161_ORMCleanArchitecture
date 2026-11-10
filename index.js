@@ -10,7 +10,7 @@ app.use('/api', require('./routes/komikRoutes'));
 
 async function startServer() {
     await connectDatabase();
-    app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+    app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
 }
 
 startServer();

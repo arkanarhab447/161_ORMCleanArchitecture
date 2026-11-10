@@ -28,16 +28,17 @@ function validateBody(Schema) {
         });
 
         if (error) {
-            return errorResponse
-            res,
-            "Validasi Input Gagal",
-            400,
-            error.details.map((item) => ({
-                field: item.path.join('.'),
-                message: item.message
-            }))
-        );
-        }req.body = value;
+            return errorResponse(
+                res,
+                "Validasi Input Gagal",
+                400,
+                error.details.map((item) => ({
+                    field: item.path.join('.'),
+                    message: item.message
+                }))
+            );
+        }
+        req.body = value;
         next();
     };
 }
